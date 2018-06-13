@@ -2,10 +2,13 @@
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "watch": "webpack --watch",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"src/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet"
   },
   "dependencies": {
+    "css-loader": "0.28.11",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "webpack": "4.12.0"
@@ -24,14 +27,14 @@
     "eslint-loader": "2.0.0",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.9.1",
+    "mini-css-extract-plugin": "0.4.0",
     "prettier": "1.13.5",
-    "webpack-cli": "^3.0.4",
+    "webpack-cli": "3.0.4",
     "webpack-dev-server": "3.1.4"
   },
   "name": "react-simple-calculator",
   "version": "1.0.0",
   "description": "simple calculator app created with react",
-  "main": "webpack.config.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/knownasdee/react-simple-calculator.git"
