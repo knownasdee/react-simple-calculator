@@ -33,15 +33,6 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader'
-      },
-      {
-        enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'standard-loader',
-        exclude: /node_modules/,
-        options: {
-          parser: 'babel-eslint'
-        }
       }
     ]
   },
