@@ -13,6 +13,7 @@ module.exports = {
   },
   devServer: {
     publicPath: '/public/',
+    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true
   },
   resolve: {

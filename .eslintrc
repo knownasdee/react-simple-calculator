@@ -8,7 +8,7 @@
 		"ecmaFeatures": {
 			"jsx": true
 		}
-	},
+	}, 
 	"env": {
 		"es6": true,
 		"browser": true,
