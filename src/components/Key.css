@@ -1,0 +1,18 @@
+.key {
+	width: 120px;
+	height: 90px;
+	border: none;
+	font-size: 35px;
+	color: black;
+	background-color: #eceff1;
+}
+.key:focus {
+	color: #ff5722;
+}
+.key:nth-last-child(-n + 3) {
+	color: white;
+	background-color: #ff5722;
+}
+.key:nth-last-child(-n + 3):focus {
+	background-color: #ff8a50;
+}

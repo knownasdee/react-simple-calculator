@@ -1,23 +1,4 @@
 .keypad {
 	display: flex;
-}
-.numerics {
-	display: flex;
 	flex-wrap: wrap;
-	width: 75%;
-}
-.numeric {
-	width: 100px;
-	height: 100px;
-}
-.key-0 {
-	width: 200px;
-}
-.operators {
-	display: flex;
-	flex-direction: column;
-}
-.operator {
-	width: 100px;
-	height: 100px;
 }

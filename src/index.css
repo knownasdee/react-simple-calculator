@@ -1,5 +1,12 @@
 body {
 	box-sizing: border-box;
+	font-family: monospace;
+}
+button {
+	font-family: inherit;
+}
+button:focus {
+	outline: none;
 }
 .app {
 	display: flex;

@@ -1,4 +1,13 @@
 .display {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
 	width: 100%;
-	height: 100px;
+	height: 120px;
+	color: black;
+	background-color: #26c6da;
+}
+.result {
+	font-size: 40px;
+	padding: 5px;
 }
