@@ -6,6 +6,7 @@ const handleClear = () => {
 	};
 };
 const handleNumeric = (state, newValue) => {
+	if (state.operand === '0' && newValue === '0') return;
 	if (state.operand !== null) return { operand: state.operand + newValue };
 	return { operand: newValue };
 };
@@ -24,7 +25,7 @@ const handleOperator = (state, nextOperator) => {
 		return {
 			operand: null,
 			operator: operation,
-			result: calculate(result, operand, operator)
+			result: String(calculate(result, operand, operator))
 		};
 	}
 
@@ -39,14 +40,34 @@ const handleOperator = (state, nextOperator) => {
 	};
 };
 
+const getDecimalSeparator = () => {
+	const n = 1.1;
+	return /^1(.+)1$/.exec(n.toLocaleString())[1];
+};
+
 const calculate = (operand1, operand2, operator) => {
-	if (operator === '+') return parseFloat(operand1) + parseFloat(operand2);
-	if (operator === '-') return parseFloat(operand1) - parseFloat(operand2);
+	const op1 = parseFloat(operand1);
+	const op2 = parseFloat(operand2);
+	const cf = calculateCorrectionFactor(operand1, operand2);
+
+	if (operator === '+') return (op1 * cf + op2 * cf) / cf;
+	if (operator === '-') return (op1 * cf - op2 * cf) / cf;
+};
+
+const calculateCorrectionFactor = (operand1, operand2) => {
+	const separator = getDecimalSeparator();
+	let cf1 = 1;
+	let cf2 = 1;
+	if (operand1.includes(separator)) cf1 = Math.pow(10, operand1.length - 2);
+	if (operand2.includes(separator)) cf2 = Math.pow(10, operand2.length - 2);
+
+	return cf1 >= cf2 ? cf1 : cf2;
 };
 
 export default {
 	handleClear,
 	handleNumeric,
 	handleSeparator,
-	handleOperator
+	handleOperator,
+	getDecimalSeparator
 };

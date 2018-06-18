@@ -4,7 +4,6 @@ import Display from './Display';
 import Keypad from './Keypad';
 import './Calculator.css';
 import helper from '../helper/helper';
-import { getDecimalSeparator } from '../helper/keypadConfig';
 
 class Calculator extends Component {
 	state = {
@@ -12,6 +11,7 @@ class Calculator extends Component {
 		operator: null,
 		result: '0'
 	};
+	separator = helper.getDecimalSeparator();
 	updateState = (updateFunc, inputKey) => {
 		this.setState(updateFunc(this.state, inputKey));
 	};
@@ -35,7 +35,7 @@ class Calculator extends Component {
 		if (/[0-9]/.test(key)) {
 			event.preventDefault();
 			this.updateState(helper.handleNumeric, key);
-		} else if (key === getDecimalSeparator()) {
+		} else if (key === this.separator) {
 			event.preventDefault();
 			this.updateState(helper.handleSeparator, key);
 		} else if (key === '+' || key === '-' || key === '=') {
@@ -60,6 +60,7 @@ class Calculator extends Component {
 			<div className="calculator">
 				<Display value={this.state.operand || this.state.result || '0'} />
 				<Keypad
+					separator={this.separator}
 					numericClick={this.numericClick}
 					separatorClick={this.separatorClick}
 					clearClick={this.clearClick}
