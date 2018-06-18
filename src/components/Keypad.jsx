@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Key from './Key';
 import './Keypad.css';
+import { getDecimalSeparator, Operators, Numerics } from '../helper/keypadConfig';
 
-const getDecimalSeparator = () => {
-	const n = 1.1;
-	return /^1(.+)1$/.exec(n.toLocaleString())[1];
-};
-const numerics = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'];
 const separator = getDecimalSeparator();
-const operators = ['+', '-', '='];
 
 class Keypad extends Component {
 	numericClick = e => {
@@ -27,10 +22,10 @@ class Keypad extends Component {
 	render() {
 		return (
 			<div className="keypad">
-				{numerics.map(key => <Key keyValue={key} handleClick={this.numericClick} />)}
+				{Numerics.map(key => <Key keyValue={key} handleClick={this.numericClick} />)}
 				<Key keyValue={separator} handleClick={this.separatorClick} />
 				<Key keyValue="C" handleClick={this.clearClick} />
-				{operators.map(operator => <Key keyValue={operator} handleClick={this.operatorClick} />)}
+				{Operators.map(operator => <Key keyValue={operator} handleClick={this.operatorClick} />)}
 			</div>
 		);
 	}

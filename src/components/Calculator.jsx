@@ -4,6 +4,7 @@ import Display from './Display';
 import Keypad from './Keypad';
 import './Calculator.css';
 import helper from '../helper/helper';
+import { getDecimalSeparator } from '../helper/keypadConfig';
 
 class Calculator extends Component {
 	state = {
@@ -34,7 +35,7 @@ class Calculator extends Component {
 		if (/[0-9]/.test(key)) {
 			event.preventDefault();
 			this.updateState(helper.handleNumeric, key);
-		} else if (key === '.') {
+		} else if (key === getDecimalSeparator()) {
 			event.preventDefault();
 			this.updateState(helper.handleSeparator, key);
 		} else if (key === '+' || key === '-' || key === '=') {
