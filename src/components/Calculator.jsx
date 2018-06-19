@@ -9,9 +9,9 @@ class Calculator extends Component {
 	state = {
 		operand: null,
 		operator: null,
-		result: '0'
+		result: '0',
+		history: ''
 	};
-	separator = helper.getDecimalSeparator();
 	updateState = (updateFunc, inputKey) => {
 		this.setState(updateFunc(this.state, inputKey));
 	};
@@ -32,17 +32,14 @@ class Calculator extends Component {
 		let key = e.key;
 		if (key === 'Enter') key = '=';
 
+		e.preventDefault();
 		if (/[0-9]/.test(key)) {
-			event.preventDefault();
 			this.updateState(helper.handleNumeric, key);
-		} else if (key === this.separator) {
-			event.preventDefault();
+		} else if (key === '.') {
 			this.updateState(helper.handleSeparator, key);
 		} else if (key === '+' || key === '-' || key === '=') {
-			event.preventDefault();
 			this.updateState(helper.handleOperator, key);
 		} else if (key === 'Escape' || key === 'Esc' || key === 'Delete') {
-			event.preventDefault();
 			this.updateState(helper.handleClear, key);
 		}
 	};
@@ -58,9 +55,8 @@ class Calculator extends Component {
 	render() {
 		return (
 			<div className="calculator">
-				<Display value={this.state.operand || this.state.result || '0'} />
+				<Display value={this.state.operand || this.state.result || '0'} history={this.state.history} />
 				<Keypad
-					separator={this.separator}
 					numericClick={this.numericClick}
 					separatorClick={this.separatorClick}
 					clearClick={this.clearClick}

@@ -2,13 +2,14 @@ const handleClear = () => {
 	return {
 		operand: null,
 		operator: null,
-		result: '0'
+		result: '0',
+		history: ''
 	};
 };
 const handleNumeric = (state, newValue) => {
 	if (state.operand === '0' && newValue === '0') return;
-	if (state.operand !== null) return { operand: state.operand + newValue };
-	return { operand: newValue };
+	if (state.operand !== null) return { operand: state.operand + String(newValue) };
+	return { operand: String(newValue) };
 };
 
 const handleSeparator = (state, separator) => {
@@ -18,31 +19,55 @@ const handleSeparator = (state, separator) => {
 };
 
 const handleOperator = (state, nextOperator) => {
-	let { operand, operator, result } = state;
+	let { operand, operator, result, history } = state;
 
-	if (operator && operand) {
-		let operation = nextOperator === '=' ? null : nextOperator;
+	// a minimum of two operands and an operation were enetered, (temp) result can be calculated
+	if (operand && operator) {
+		// reset history if this is the final result
+		if (nextOperator === '=') {
+			return {
+				operand: null,
+				operator: null,
+				result: String(calculate(result, operand, operator)),
+				history: ''
+			};
+		} else {
+			// keep on chaining history if last operation was + or -
+			return {
+				operand: null,
+				operator: nextOperator,
+				result: String(calculate(result, operand, operator)),
+				history: history + operand + nextOperator
+			};
+		}
+	}
+
+	// (temp) result has been calculated, next operation entered
+	if (!operand && nextOperator !== '=') {
+		let currentHistory = history.length > 0 ? history.substr(0, history.length - 1) : result;
 		return {
-			operand: null,
-			operator: operation,
-			result: String(calculate(result, operand, operator))
+			operator: nextOperator,
+			history: currentHistory + nextOperator
 		};
 	}
 
-	if (!operand) {
-		return { operator: nextOperator };
+	// if '=' is clicked right after a calculation or number entry, do nothing
+	if (nextOperator === '=') {
+		return {
+			operand: null,
+			operator: null,
+			result: operand || result,
+			history: ''
+		};
 	}
 
+	// first operand and first action (+ or -) were entered
 	return {
 		operand: null,
 		operator: nextOperator,
-		result: operand
+		result: operand,
+		history: history + operand + nextOperator
 	};
-};
-
-const getDecimalSeparator = () => {
-	const n = 1.1;
-	return /^1(.+)1$/.exec(n.toLocaleString())[1];
 };
 
 const calculate = (operand1, operand2, operator) => {
@@ -55,11 +80,10 @@ const calculate = (operand1, operand2, operator) => {
 };
 
 const calculateCorrectionFactor = (operand1, operand2) => {
-	const separator = getDecimalSeparator();
 	let cf1 = 1;
 	let cf2 = 1;
-	if (operand1.includes(separator)) cf1 = Math.pow(10, operand1.length - 2);
-	if (operand2.includes(separator)) cf2 = Math.pow(10, operand2.length - 2);
+	if (operand1.includes('.')) cf1 = Math.pow(10, operand1.length - 2);
+	if (operand2.includes('.')) cf2 = Math.pow(10, operand2.length - 2);
 
 	return cf1 >= cf2 ? cf1 : cf2;
 };
@@ -68,6 +92,5 @@ export default {
 	handleClear,
 	handleNumeric,
 	handleSeparator,
-	handleOperator,
-	getDecimalSeparator
+	handleOperator
 };

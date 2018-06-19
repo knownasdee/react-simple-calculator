@@ -21,7 +21,7 @@ class Keypad extends Component {
 		return (
 			<div className="keypad">
 				{Numerics.map(key => <Key keyValue={key} handleClick={this.numericClick} />)}
-				<Key keyValue={this.props.separator} handleClick={this.separatorClick} />
+				<Key keyValue="." handleClick={this.separatorClick} />
 				<Key keyValue="C" handleClick={this.clearClick} />
 				{Operators.map(operator => <Key keyValue={operator} handleClick={this.operatorClick} />)}
 			</div>
