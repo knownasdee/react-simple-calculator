@@ -1,13 +1,21 @@
+:root {
+	--font-default: monospace;
+	--background-color-display: #26c6da;
+}
+
 body {
 	box-sizing: border-box;
-	font-family: monospace;
+	font-family: var(--font-default);
 }
+
 button {
 	font-family: inherit;
 }
+
 button:focus {
 	outline: none;
 }
+
 .app {
 	display: flex;
 	flex-direction: column;

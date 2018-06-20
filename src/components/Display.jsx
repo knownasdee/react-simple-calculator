@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { string } from 'prop-types';
+import { formatResult } from '../helper/config';
 import './Display.css';
-import { formatResult } from '../helper/keypadConfig';
 
 const Display = props => (
 	<div className="display">
@@ -14,5 +15,10 @@ const Display = props => (
 		<div className="result">{formatResult(props.value)}</div>
 	</div>
 );
+
+Display.propTypes = {
+	history: string,
+	value: string
+};
 
 export default Display;

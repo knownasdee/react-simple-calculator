@@ -12,4 +12,5 @@ const App = () => (
 const renderApp = () => {
 	render(<App />, document.getElementById('app'));
 };
+
 renderApp();

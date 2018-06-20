@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Display from './Display';
 import Keypad from './Keypad';
+import helper from '../helper/logic';
 import './Calculator.css';
-import helper from '../helper/helper';
 
 class Calculator extends Component {
 	state = {
@@ -28,11 +28,9 @@ class Calculator extends Component {
 		this.updateState(helper.handleOperator, e.target.textContent);
 	};
 
-	handleKeyDown = e => {
-		let key = e.key;
+	handleKeyDown = ({ key }) => {
 		if (key === 'Enter') key = '=';
 
-		e.preventDefault();
 		if (/[0-9]/.test(key)) {
 			this.updateState(helper.handleNumeric, key);
 		} else if (key === '.') {

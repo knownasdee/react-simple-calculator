@@ -1,18 +1,27 @@
+:root {
+	--background-color-numeric: #eceff1;
+	--background-color-operation: #ff5722;
+	--background-color-operation-focus: #ff8a50;
+}
+
 .key {
 	width: 120px;
 	height: 90px;
 	border: none;
 	font-size: 35px;
 	color: black;
-	background-color: #eceff1;
+	background-color: var(--background-color-numeric);
 }
+
 .key:focus {
-	color: #ff5722;
+	color: var(--background-color-operation);
 }
+
 .key:nth-last-child(-n + 3) {
 	color: white;
-	background-color: #ff5722;
+	background-color: var(--background-color-operation);
 }
+
 .key:nth-last-child(-n + 3):focus {
-	background-color: #ff8a50;
+	background-color: var(--background-color-operation-focus);
 }

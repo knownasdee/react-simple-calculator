@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { func } from 'prop-types';
 import Key from './Key';
+import { Operators, Numerics } from '../helper/config';
 import './Keypad.css';
-import { Operators, Numerics } from '../helper/keypadConfig';
 
 class Keypad extends Component {
 	numericClick = e => {
@@ -28,5 +29,12 @@ class Keypad extends Component {
 		);
 	}
 }
+
+Keypad.propTypes = {
+	numericClick: func.isRequired,
+	separatorClick: func.isRequired,
+	clearClick: func.isRequired,
+	operatorClick: func.isRequired
+};
 
 export default Keypad;

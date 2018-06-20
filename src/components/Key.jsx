@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { string, func } from 'prop-types';
 import './Key.css';
 
 const Key = props => (
@@ -7,5 +8,10 @@ const Key = props => (
 		{props.keyValue}
 	</button>
 );
+
+Key.propTypes = {
+	keyValue: string,
+	handleClick: func
+};
 
 export default Key;
