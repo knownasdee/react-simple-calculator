@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Display from './Display';
 import Keypad from './Keypad';
 import helper from '../helper/logic';
+import Config from '../helper/config';
 import './Calculator.css';
 
 class Calculator extends Component {
@@ -19,7 +20,7 @@ class Calculator extends Component {
 		this.updateState(helper.handleNumeric, e.target.textContent);
 	};
 	separatorClick = e => {
-		this.updateState(helper.handleSeparator, e.target.textContent);
+		this.updateState(helper.handleSeparator);
 	};
 	clearClick = e => {
 		this.updateState(helper.handleClear);
@@ -33,9 +34,9 @@ class Calculator extends Component {
 
 		if (/[0-9]/.test(key)) {
 			this.updateState(helper.handleNumeric, key);
-		} else if (key === '.') {
-			this.updateState(helper.handleSeparator, key);
-		} else if (key === '+' || key === '-' || key === '=') {
+		} else if (key === Config.Separator) {
+			this.updateState(helper.handleSeparator);
+		} else if (Config.Operators.includes(key)) {
 			this.updateState(helper.handleOperator, key);
 		} else if (key === 'Escape' || key === 'Esc' || key === 'Delete') {
 			this.updateState(helper.handleClear, key);
