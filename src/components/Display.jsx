@@ -1,12 +1,19 @@
 import React from 'react';
 import { string } from 'prop-types';
-import { formatResult } from '../helper/logic';
 import './Display.css';
+
+const MAX_HISTORY_LENGTH = 35;
+const MAX_RESULT_LENGTH = 13;
+
+const formatResult = result => {
+  if (result.length > MAX_RESULT_LENGTH) return String(parseFloat(result).toExponential(3));
+  return result;
+};
 
 const Display = props => (
   <div className="display">
     <div className="history-container">
-      {props.history.length > 35 && <div>&lt;&lt;</div>}
+      {props.history.length > MAX_HISTORY_LENGTH && <div>&lt;&lt;</div>}
       <div className="history">
         <bdi>{props.history}</bdi>
       </div>

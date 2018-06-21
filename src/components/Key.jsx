@@ -10,11 +10,7 @@ const Key = props => (
 
 Key.propTypes = {
   keyValue: string.isRequired,
-  handleClick: func
-};
-
-Key.defaultProps = {
-  handleClick: function noop() {}
+  handleClick: func.isRequired
 };
 
 export default Key;

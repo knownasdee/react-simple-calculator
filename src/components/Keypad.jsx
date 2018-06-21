@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
 import Key from './Key';
-import Config from '../helper/config';
+import Constants from '../helper/constants';
 import './Keypad.css';
 
 class Keypad extends Component {
@@ -24,10 +24,10 @@ class Keypad extends Component {
   render() {
     return (
       <div className="keypad">
-        {Config.Numerics.map(key => <Key keyValue={key} handleClick={this.numericClick} />)}
-        <Key keyValue={Config.Separator} handleClick={this.separatorClick} />
-        <Key keyValue={Config.Clear} handleClick={this.clearClick} />
-        {Config.Operators.map(operator => <Key keyValue={operator} handleClick={this.operatorClick} />)}
+        {Constants.NUMERICS.map(key => <Key keyValue={key} handleClick={this.numericClick} />)}
+        <Key keyValue={Constants.SEPARATOR} handleClick={this.separatorClick} />
+        <Key keyValue={Constants.CLEAR} handleClick={this.clearClick} />
+        {Constants.OPERATORS.map(operator => <Key keyValue={operator} handleClick={this.operatorClick} />)}
       </div>
     );
   }
