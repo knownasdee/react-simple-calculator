@@ -4,8 +4,8 @@ const OPERATORS = ['+', '-', '='];
 const CLEAR = 'C';
 
 export default {
-	NUMERICS,
-	SEPARATOR,
-	OPERATORS,
-	CLEAR
+  NUMERICS,
+  SEPARATOR,
+  OPERATORS,
+  CLEAR
 };
