@@ -43,7 +43,7 @@ class Calculator extends Component {
   handleKeyDown = e => {
     const key = e.key === 'Enter' ? '=' : e.key;
 
-    if (/[0-9]/.test(key)) {
+    if (Config.Numerics.includes(key)) {
       this.updateState(helper.handleNumeric, key);
     } else if (key === Config.Separator) {
       this.updateState(helper.handleSeparator);

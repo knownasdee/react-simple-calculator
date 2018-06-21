@@ -31,14 +31,24 @@ const handleClear = () => ({
 });
 
 const handleNumeric = (state, newValue) => {
-  if (state.operand === '0' && newValue === '0') return {};
-  if (state.operand !== null) return { operand: state.operand + String(newValue) };
+  const { operand } = state;
+
+  // eliminate leading zeros
+  if (operand === '0' && newValue) return {};
+
+  // keep constructing existing number
+  if (operand !== null) return { operand: operand + String(newValue) };
+
+  // first number entered
   return { operand: String(newValue) };
 };
 
 const handleSeparator = state => {
   const { operand } = state;
+
+  // for existing whole number entry, add separator
   if (operand && !operand.includes(separator)) return { operand: operand + separator };
+  // if separator is entered with no existing operand turn '.' into '0.'
   else if (!operand) return { operand: `0${separator}` };
   return {};
 };
@@ -68,6 +78,7 @@ const handleOperator = (state, nextOperator) => {
 
   // (temp) result has been calculated, next operation entered
   if (!operand && nextOperator !== '=') {
+    // keep on chaining history
     const currentHistory = history.length > 0 ? history.substr(0, history.length - 1) : result;
     return {
       operator: nextOperator,
@@ -75,7 +86,7 @@ const handleOperator = (state, nextOperator) => {
     };
   }
 
-  // if '=' is clicked right after a calculation or number entry, do nothing
+  // if '=' is clicked right after evaluation or number entry, do nothing
   if (nextOperator === '=') {
     return {
       operand: null,
@@ -92,6 +103,11 @@ const handleOperator = (state, nextOperator) => {
     result: operand,
     history: history + operand + nextOperator
   };
+};
+
+export const formatResult = result => {
+  if (result.length > 13) return String(parseFloat(result).toExponential(3));
+  return result;
 };
 
 export default {
