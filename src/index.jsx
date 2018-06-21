@@ -4,13 +4,13 @@ import Calculator from './components/Calculator';
 import './index.css';
 
 const App = () => (
-	<div className="app">
-		<Calculator />
-	</div>
+  <div className="app">
+    <Calculator />
+  </div>
 );
 
 const renderApp = () => {
-	render(<App />, document.getElementById('app'));
+  render(<App />, document.getElementById('app'));
 };
 
 renderApp();

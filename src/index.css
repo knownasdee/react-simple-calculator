@@ -1,6 +1,9 @@
 :root {
 	--font-default: monospace;
 	--background-color-display: #26c6da;
+	--background-color-numeric: #eceff1;
+	--background-color-operation: #ff5722;
+	--background-color-operation-focus: #ff8a50;
 }
 
 body {

@@ -4,13 +4,13 @@ const Operators = ['+', '-', '='];
 const Clear = 'C';
 
 export const formatResult = result => {
-	if (result.length > 13) return String(parseFloat(result).toExponential(3));
-	return result;
+  if (result.length > 13) return String(parseFloat(result).toExponential(3));
+  return result;
 };
 
 export default {
-	Numerics,
-	Separator,
-	Operators,
-	Clear
+  Numerics,
+  Separator,
+  Operators,
+  Clear
 };

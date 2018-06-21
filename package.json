@@ -5,11 +5,12 @@
     "dev": "webpack-dev-server",
     "watch": "webpack --watch",
     "format": "prettier --write --single-quote --print-width=120 --tab-width=2 \"src/**/*.{js,jsx}\"",
-    "lint": "eslint **/*.{js,jsx} --quiet",
+    "lint": "eslint **/*.{js,jsx} --fix",
     "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "css-loader": "0.28.11",
+    "prop-types": "^15.6.2",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "webpack": "4.12.0"
@@ -23,9 +24,12 @@
     "babel-preset-env": "1.7.0",
     "babel-preset-react": "6.24.1",
     "eslint": "4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-config-react": "1.1.7",
     "eslint-loader": "2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.9.1",
     "gh-pages": "^1.2.0",

@@ -1,5 +1,5 @@
 {
-	"extends": ["prettier", "prettier/react"],
+	"extends": ["airbnb", "prettier", "prettier/react"],
 	"plugins": ["prettier"],
 	"parser": "babel-eslint",
 	"parserOptions": {
@@ -13,8 +13,5 @@
 		"es6": true,
 		"browser": true,
 		"node": true
-	},
-	"rules": {
-		"semi": 2
 	}
 }
