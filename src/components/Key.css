@@ -3,19 +3,19 @@
 	height: 90px;
 	border: none;
 	font-size: 35px;
-	color: black;
-	background-color: var(--background-color-numeric);
+	color: #000;
+	background-color: #eceff1;
 }
 
 .key:focus {
-	color: var(--background-color-operation);
+	color: #ff5722;
 }
 
 .key:nth-last-child(-n + 3) {
 	color: white;
-	background-color: var(--background-color-operation);
+	background-color: #ff5722;
 }
 
 .key:nth-last-child(-n + 3):focus {
-	background-color: var(--background-color-operation-focus);
+	background-color: #ff8a50;
 }
