@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack",
     "dev": "webpack-dev-server",
     "watch": "webpack --watch",
     "test": "jest --silent",

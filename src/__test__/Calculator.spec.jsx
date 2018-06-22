@@ -27,7 +27,7 @@ describe('Calculator', () => {
       .at(0)
       .simulate('click');
 
-    expect(component.state().operand).toEqual(`0${  Constants.SEPARATOR}`);
+    expect(component.state().operand).toEqual(`0${Constants.SEPARATOR}`);
   });
 
   it('calculates sum correctly', () => {
