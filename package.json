@@ -1,16 +1,18 @@
 {
   "scripts": {
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
     "watch": "webpack --watch",
-    "format": "prettier --write --single-quote --print-width=120 --tab-width=2 \"src/**/*.{js,jsx}\"",
+    "test": "jest",
+    "format": "prettier --write --single-quote --print-width=120 --tab-width=2 \"src/**/*.{js,jsx,css}\"",
     "lint": "eslint **/*.{js,jsx} --fix",
     "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "css-loader": "0.28.11",
-    "prop-types": "^15.6.2",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "prop-types": "15.6.2",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "webpack": "4.12.0"
@@ -18,26 +20,47 @@
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-eslint": "8.2.3",
+    "babel-jest": "23.0.1",
     "babel-loader": "7.1.4",
-    "babel-plugin-dynamic-import-node": "1.2.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-decorators-legacy": "1.3.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "babel-preset-env": "1.7.0",
     "babel-preset-react": "6.24.1",
     "eslint": "4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-config-react": "1.1.7",
     "eslint-loader": "2.0.0",
-    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "2.6.0",
     "eslint-plugin-react": "7.9.1",
-    "gh-pages": "^1.2.0",
-    "html-webpack-plugin": "^3.2.0",
+    "gh-pages": "1.2.0",
+    "html-webpack-plugin": "3.2.0",
+    "jest": "21.0.0",
     "mini-css-extract-plugin": "0.4.0",
     "prettier": "1.13.5",
     "webpack-cli": "3.0.4",
     "webpack-dev-server": "2.9.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/src/__test__/__mocks__/styleMock.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   },
   "name": "react-simple-calculator",
   "version": "1.0.0",
