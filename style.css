@@ -1,0 +1,91 @@
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 120px;
+  color: #000;
+  background-color: #26c6da;
+}
+
+.history-container {
+  display: flex;
+  align-items: center;
+  width: 96%;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.history {
+  margin-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.result {
+  padding: 10px;
+  font-size: 45px;
+}
+
+.key {
+  width: 120px;
+  height: 90px;
+  border: none;
+  font-size: 35px;
+  color: #000;
+  background-color: #eceff1;
+  cursor: pointer;
+}
+
+.key:focus {
+  color: #ff5722;
+}
+
+.operator {
+  color: #fff;
+  background-color: #ff5722;
+}
+
+.operator:focus {
+  background-color: #ff8a50;
+}
+
+.keypad {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calculator {
+  width: 360px;
+  height: 570px;
+}
+
+:root {
+  --font-default: monospace;
+  --background-color-display: #26c6da;
+  --background-color-numeric: #eceff1;
+  --background-color-operation: #ff5722;
+  --background-color-operation-focus: #ff8a50;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+button {
+  font-family: inherit;
+}
+
+button:focus {
+  outline: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
