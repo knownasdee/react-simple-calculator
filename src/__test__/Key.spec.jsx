@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Calculator from '../components/Calculator';
+import Key from '../components/Key';
 
-describe('Calculator', () => {
+describe('Key', () => {
   it('renders correctly', () => {
-    const component = shallow(<Calculator />);
+    const component = shallow(<Key />);
     expect(component).toBeDefined();
   });
 });

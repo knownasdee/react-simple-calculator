@@ -3,7 +3,7 @@
     "build": "webpack --mode production",
     "dev": "webpack-dev-server",
     "watch": "webpack --watch",
-    "test": "jest",
+    "test": "jest --silent",
     "format": "prettier --write --single-quote --print-width=120 --tab-width=2 \"src/**/*.{js,jsx,css}\"",
     "lint": "eslint **/*.{js,jsx} --fix",
     "deploy": "gh-pages -d public"
@@ -48,15 +48,8 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
     },
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "bower_components",
-      "shared"
-    ],
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": ["node_modules", "bower_components", "shared"],
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/src/__test__/__mocks__/styleMock.js"
     },

@@ -24,10 +24,12 @@ class Keypad extends Component {
   render() {
     return (
       <div className="keypad">
-        {Constants.NUMERICS.map(key => <Key keyValue={key} handleClick={this.numericClick} />)}
-        <Key keyValue={Constants.SEPARATOR} handleClick={this.separatorClick} />
-        <Key keyValue={Constants.CLEAR} handleClick={this.clearClick} />
-        {Constants.OPERATORS.map(operator => <Key keyValue={operator} handleClick={this.operatorClick} />)}
+        {Constants.NUMERICS.map(key => <Key keyValue={key} className="numeric" handleClick={this.numericClick} />)}
+        <Key keyValue={Constants.SEPARATOR} className="separator" handleClick={this.separatorClick} />
+        <Key keyValue={Constants.CLEAR} className="clear" handleClick={this.clearClick} />
+        {Constants.OPERATORS.map(operator => (
+          <Key keyValue={operator} className="operator" handleClick={this.operatorClick} />
+        ))}
       </div>
     );
   }
